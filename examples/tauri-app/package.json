@@ -1,14 +1,14 @@
 {
-	"name": "tauri-app",
-	"scripts": {
-		"build": "tsc && vite build",
-		"dev": "vite",
-		"preview": "vite preview"
-	},
 	"dependencies": {
 		"tauri-plugin-websocket-api": "link:..\\.."
 	},
 	"devDependencies": {
 		"@tauri-apps/cli": "2.0.0-beta.22"
+	},
+	"name": "tauri-app",
+	"scripts": {
+		"build": "tsc && vite build",
+		"dev": "vite",
+		"preview": "vite preview"
 	}
 }
