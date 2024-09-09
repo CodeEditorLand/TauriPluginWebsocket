@@ -1,31 +1,26 @@
 export interface ConnectionConfig {
-	writeBufferSize?: number;
-	maxWriteBufferSize?: number;
-	maxMessageSize?: number;
-	maxFrameSize?: number;
-	acceptUnmaskedFrames?: boolean;
-	headers?: HeadersInit;
+    writeBufferSize?: number;
+    maxWriteBufferSize?: number;
+    maxMessageSize?: number;
+    maxFrameSize?: number;
+    acceptUnmaskedFrames?: boolean;
+    headers?: HeadersInit;
 }
 export interface MessageKind<T, D> {
-	type: T;
-	data: D;
+    type: T;
+    data: D;
 }
 export interface CloseFrame {
-	code: number;
-	reason: string;
+    code: number;
+    reason: string;
 }
-export type Message =
-	| MessageKind<"Text", string>
-	| MessageKind<"Binary", number[]>
-	| MessageKind<"Ping", number[]>
-	| MessageKind<"Pong", number[]>
-	| MessageKind<"Close", CloseFrame | null>;
+export type Message = MessageKind<"Text", string> | MessageKind<"Binary", number[]> | MessageKind<"Ping", number[]> | MessageKind<"Pong", number[]> | MessageKind<"Close", CloseFrame | null>;
 export default class WebSocket {
-	id: number;
-	private readonly listeners;
-	constructor(id: number, listeners: Array<(arg: Message) => void>);
-	static connect(url: string, config?: ConnectionConfig): Promise<WebSocket>;
-	addListener(cb: (arg: Message) => void): void;
-	send(message: Message | string | number[]): Promise<void>;
-	disconnect(): Promise<void>;
+    id: number;
+    private readonly listeners;
+    constructor(id: number, listeners: Array<(arg: Message) => void>);
+    static connect(url: string, config?: ConnectionConfig): Promise<WebSocket>;
+    addListener(cb: (arg: Message) => void): void;
+    send(message: Message | string | number[]): Promise<void>;
+    disconnect(): Promise<void>;
 }
