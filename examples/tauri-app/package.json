@@ -1,4 +1,13 @@
 {
+<<<<<<< HEAD
+=======
+	"dependencies": {
+		"tauri-plugin-websocket-api": "link:..\\.."
+	},
+	"devDependencies": {
+		"@tauri-apps/cli": "2.0.0-rc.16"
+	},
+>>>>>>> 8251792c11b9eee54bcb8bebda75df168a079fa8
 	"name": "tauri-app",
 	"scripts": {
 		"build": "tsc && vite build",
