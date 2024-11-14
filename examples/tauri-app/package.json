@@ -3,7 +3,7 @@
 		"tauri-plugin-websocket-api": "link:..\\.."
 	},
 	"devDependencies": {
-		"@tauri-apps/cli": "1.6.3"
+		"@tauri-apps/cli": "2.1.0"
 	},
 	"name": "tauri-app",
 	"scripts": {
