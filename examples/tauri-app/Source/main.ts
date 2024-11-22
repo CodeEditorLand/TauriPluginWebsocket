@@ -7,6 +7,7 @@ let ws: WebSocket;
 
 document.addEventListener("DOMContentLoaded", async () => {
 	document.querySelector("#send")?.addEventListener("click", send);
+
 	document
 		.querySelector("#disconnect")
 		?.addEventListener("click", disconnect);
@@ -19,6 +20,7 @@ function _updateResponse(returnValue: unknown) {
 		typeof returnValue === "string"
 			? returnValue
 			: JSON.stringify(returnValue);
+
 	document.querySelector("#response-container")?.appendChild(msg);
 }
 
@@ -26,6 +28,7 @@ async function connect() {
 	try {
 		ws = await WebSocket.connect("ws://127.0.0.1:8080").then((r) => {
 			_updateResponse("Connected");
+
 			return r;
 		});
 	} catch (e) {

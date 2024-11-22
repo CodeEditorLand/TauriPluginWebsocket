@@ -23,6 +23,7 @@ export type Message =
 export default class WebSocket {
 	id: number;
 	private readonly listeners;
+
 	constructor(id: number, listeners: Array<(arg: Message) => void>);
 	static connect(url: string, config?: ConnectionConfig): Promise<WebSocket>;
 	addListener(cb: (arg: Message) => void): void;
