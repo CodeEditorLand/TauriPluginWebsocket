@@ -20,6 +20,7 @@ export type Message =
 	| MessageKind<"Ping", number[]>
 	| MessageKind<"Pong", number[]>
 	| MessageKind<"Close", CloseFrame | null>;
+
 export default class WebSocket {
 	id: number;
 	private readonly listeners;
