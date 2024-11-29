@@ -11,11 +11,13 @@ document.addEventListener("DOMContentLoaded", async () => {
 	document
 		.querySelector("#disconnect")
 		?.addEventListener("click", disconnect);
+
 	await connect();
 });
 
 function _updateResponse(returnValue: unknown) {
 	const msg = document.createElement("p");
+
 	msg.textContent =
 		typeof returnValue === "string"
 			? returnValue
@@ -34,6 +36,7 @@ async function connect() {
 	} catch (e) {
 		_updateResponse(e);
 	}
+
 	ws.addListener(_updateResponse);
 }
 
