@@ -110,7 +110,9 @@ async fn connect<R:Runtime>(
 	config:Option<ConnectionConfig>,
 ) -> Result<Id> {
 	let id = rand::random();
+
 	let mut request = url.into_client_request()?;
+
 	let tls_connector = match window.try_state::<TlsConnector>() {
 		Some(tls_connector) => tls_connector.0.lock().await.clone(),
 		None => None,
@@ -119,7 +121,9 @@ async fn connect<R:Runtime>(
 	if let Some(headers) = config.as_ref().and_then(|c| c.headers.as_ref()) {
 		for (k, v) in headers {
 			let header_name = HeaderName::from_str(k.as_str())?;
+
 			let header_value = HeaderValue::from_str(v.as_str())?;
+
 			request.headers_mut().insert(header_name, header_value);
 		}
 	}
@@ -130,13 +134,18 @@ async fn connect<R:Runtime>(
 
 	tauri::async_runtime::spawn(async move {
 		let (write, read) = ws_stream.split();
+
 		let manager = window.state::<ConnectionManager>();
+
 		manager.0.lock().await.insert(id, write);
+
 		read.for_each(move |message| {
 			let window_ = window.clone();
+
 			async move {
 				if let Ok(Message::Close(_)) = message {
 					let manager = window_.state::<ConnectionManager>();
+
 					manager.0.lock().await.remove(&id);
 				}
 
@@ -163,8 +172,10 @@ async fn connect<R:Runtime>(
 					// recieved.
 					Err(e) => serde_json::to_value(Error::from(e)).unwrap(),
 				};
+
 				let js = format_callback(callback_function, &response)
 					.expect("unable to serialize websocket message");
+
 				let _ = window_.eval(js.as_str());
 			}
 		})
@@ -193,6 +204,7 @@ async fn send(manager:State<'_, ConnectionManager>, id:Id, message:WebSocketMess
 				},
 			})
 			.await?;
+
 		Ok(())
 	} else {
 		Err(Error::ConnectionNotFound(id))
@@ -211,6 +223,7 @@ impl Builder {
 
 	pub fn tls_connector(mut self, connector:Connector) -> Self {
 		self.tls_connector.replace(connector);
+
 		self
 	}
 
@@ -219,7 +232,9 @@ impl Builder {
 			.invoke_handler(tauri::generate_handler![connect, send])
 			.setup(|app| {
 				app.manage(ConnectionManager::default());
+
 				app.manage(TlsConnector(Mutex::new(self.tls_connector)));
+
 				Ok(())
 			})
 			.build()

@@ -8,6 +8,7 @@ async fn start_server() {
 
 	// Create the event loop and TCP listener we'll accept connections on.
 	let try_socket = TcpListener::bind(&addr).await;
+
 	let listener = try_socket.expect("Failed to bind");
 
 	while let Ok((stream, _)) = listener.accept().await {
@@ -21,6 +22,7 @@ async fn accept_connection(stream:TcpStream) {
 		.expect("Error during the websocket handshake occurred");
 
 	let (write, read) = ws_stream.split();
+
 	if let Err(e) = read.forward(write).await {
 		eprintln!("Error: {}", e);
 	}
@@ -28,6 +30,7 @@ async fn accept_connection(stream:TcpStream) {
 
 fn main() {
 	tauri::async_runtime::spawn(start_server());
+
 	tauri::Builder::default()
 		.plugin(tauri_plugin_websocket::init())
 		.run(tauri::generate_context!())
