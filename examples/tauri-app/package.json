@@ -1,14 +1,14 @@
 {
-	"dependencies": {
-		"tauri-plugin-websocket-api": "link:..\\.."
-	},
-	"devDependencies": {
-		"@codeeditorland/cli": "2.1.0"
-	},
-	"name": "tauri-app",
+	"name": "@codeeditorland/app",
 	"scripts": {
 		"build": "tsc && vite build",
 		"dev": "vite",
 		"preview": "vite preview"
+	},
+	"dependencies": {
+		"@codeeditorland/plugin-websocket-api": "link:..\\.."
+	},
+	"devDependencies": {
+		"@codeeditorland/cli": "0.0.1"
 	}
 }
