@@ -1,27 +1,27 @@
 use std::{collections::HashMap, str::FromStr};
 
-use futures_util::{stream::SplitSink, SinkExt, StreamExt};
+use futures_util::{SinkExt, StreamExt, stream::SplitSink};
 use http::header::{HeaderName, HeaderValue};
-use serde::{ser::Serializer, Deserialize, Serialize};
+use serde::{Deserialize, Serialize, ser::Serializer};
 use tauri::{
-	api::ipc::{format_callback, CallbackFn},
-	plugin::{Builder as PluginBuilder, TauriPlugin},
 	Manager,
 	Runtime,
 	State,
 	Window,
+	api::ipc::{CallbackFn, format_callback},
+	plugin::{Builder as PluginBuilder, TauriPlugin},
 };
 use tokio::{net::TcpStream, sync::Mutex};
 use tokio_tungstenite::{
-	connect_async_tls_with_config,
-	tungstenite::{
-		client::IntoClientRequest,
-		protocol::{CloseFrame as ProtocolCloseFrame, WebSocketConfig},
-		Message,
-	},
 	Connector,
 	MaybeTlsStream,
 	WebSocketStream,
+	connect_async_tls_with_config,
+	tungstenite::{
+		Message,
+		client::IntoClientRequest,
+		protocol::{CloseFrame as ProtocolCloseFrame, WebSocketConfig},
+	},
 };
 
 type Id = u32;
