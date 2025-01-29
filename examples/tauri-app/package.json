@@ -1,19 +1,14 @@
 {
-  "name": "tauri-app",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview"
-  },
-  "devDependencies": {
-    "@tauri-apps/cli": "1.6.3",
-    "typescript": "^5.7.2",
-    "vite": "^6.0.11"
-  },
-  "dependencies": {
-    "tauri-plugin-websocket-api": "link:..\\.."
-  }
+	"name": "@codeeditorland/app",
+	"scripts": {
+		"build": "tsc && vite build",
+		"dev": "vite",
+		"preview": "vite preview"
+	},
+	"dependencies": {
+		"@codeeditorland/plugin-websocket-api": "link:..\\.."
+	},
+	"devDependencies": {
+		"@codeeditorland/cli": "1.6.3"
+	}
 }
