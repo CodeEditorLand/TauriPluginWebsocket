@@ -1,22 +1,23 @@
-[package]
-name = "tauri-plugin-websocket"
-version = "0.0.0"
-authors = { workspace = true }
-license = { workspace = true }
-edition = { workspace = true }
-rust-version = { workspace = true }
-exclude = ["/examples"]
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
 [dependencies]
+futures-util = "0.3"
+http = "1"
+log = { workspace = true }
+rand = "0.8"
 serde = { workspace = true }
 serde_json = { workspace = true }
 tauri = { workspace = true }
-log = { workspace = true }
 thiserror = { workspace = true }
-http = "1"
-rand = "0.8"
-futures-util = "0.3"
 tokio = { version = "1", features = ["net", "sync"] }
 tokio-tungstenite = { version = "0.26", features = ["native-tls"] }
+
+[lib]
+path = "Source/lib.rs"
+
+[package]
+authors = { workspace = true }
+edition = { workspace = true }
+exclude = ["/examples"]
+license-file = { workspace = true }
+name = "tauri-plugin-websocket"
+rust-version = { workspace = true }
+version = "0.0.0"

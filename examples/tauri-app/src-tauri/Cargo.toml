@@ -1,20 +1,20 @@
-[package]
-name = "app"
-version = "0.1.0"
-description = "A Tauri App"
-edition = "2021"
-
-[dependencies]
-serde = { workspace = true }
-serde_json = { workspace = true }
-tauri = { workspace = true }
-tokio = { version = "1", features = ["net"] }
-futures-util = "0.3"
-tauri-plugin-websocket = { path = "../../../" }
-tokio-tungstenite = "0.26"
-
 [build-dependencies]
 tauri-build = { workspace = true }
 
+[dependencies]
+futures-util = "0.3"
+serde = { workspace = true }
+serde_json = { workspace = true }
+tauri = { workspace = true }
+tauri-plugin-websocket = { path = "../../../" }
+tokio = { version = "1", features = ["net"] }
+tokio-tungstenite = "0.26"
+
 [features]
 custom-protocol = [ "tauri/custom-protocol" ]
+
+[package]
+description = "A Tauri App"
+edition = "2021"
+name = "app"
+version = "0.1.0"
