@@ -1,12 +1,12 @@
 [dependencies]
 futures-util = "0.3"
 http = "1"
-log = { workspace = true }
-rand = "0.8"
-serde = { workspace = true }
-serde_json = { workspace = true }
-tauri = { workspace = true }
-thiserror = { workspace = true }
+log = { version = "0.4.25" }
+rand = "0.9"
+serde = { version = "1.0.217" }
+serde_json = { version = "1.0.138" }
+tauri = { version = "2.2.5" }
+thiserror = { version = "2.0.11" }
 tokio = { version = "1", features = ["net", "sync"] }
 tokio-tungstenite = { version = "0.26", features = ["native-tls"] }
 
@@ -14,10 +14,10 @@ tokio-tungstenite = { version = "0.26", features = ["native-tls"] }
 path = "Source/lib.rs"
 
 [package]
-authors = { workspace = true }
-edition = { workspace = true }
+authors = ["Tauri Programme within The Commons Conservancy"]
+edition = "2024"
 exclude = ["/examples"]
-license-file = { workspace = true }
-name = "tauri-plugin-websocket"
-rust-version = { workspace = true }
+license-file = "LICENSE"
+name = "tauri-plugin-websocket-read-only"
+rust-version = "1.85.0"
 version = "0.0.0"

@@ -1,12 +1,12 @@
 [build-dependencies]
-tauri-build = { workspace = true }
+tauri-build = { version = "2.0.5" }
 
 [dependencies]
 futures-util = "0.3"
-serde = { workspace = true }
-serde_json = { workspace = true }
-tauri = { workspace = true }
-tauri-plugin-websocket = { path = "../../../" }
+serde = { version = "1.0.217" }
+serde_json = { version = "1.0.138" }
+tauri = { version = "2.2.5" }
+tauri-plugin-websocket = { version = "2.3.0"}
 tokio = { version = "1", features = ["net"] }
 tokio-tungstenite = "0.26"
 
@@ -15,6 +15,10 @@ custom-protocol = [ "tauri/custom-protocol" ]
 
 [package]
 description = "A Tauri App"
-edition = "2021"
-name = "app"
+edition = "2024"
+name = "tauri-plugin-web-socket-example-tauri-app"
 version = "0.1.0"
+
+[[bin]]
+name = "app"
+path = "Source/main.rs"
